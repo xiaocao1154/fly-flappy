@@ -20,9 +20,9 @@ export class FlappyGame {
       if (collided(this.bird, pipe, this.height)) { this.running = false; this.onDeath(this.deathCause(pipe)); return; }
     }
     this.pipes = this.pipes.filter((p) => p.x + p.width > -20);
-    if (this.bird.y - this.bird.radius <= 0 || this.bird.y + this.bird.radius >= this.height - 46) { this.running = false; this.onDeath(this.bird.y < 100 ? 'THE FLY FLAPPED TOO EARLY.' : 'THE FLY DID NOT FLAP.'); }
+    if(this.bird.y - this.bird.radius <= 0 || this.bird.y + this.bird.radius >= this.height - 46) { this.running = false; this.onDeath(this.bird.y < 100 ? '果蝇起飞太急，撞到了天花板。' : '果蝇错过了这次拍翅。'); }
   }
-  private deathCause(pipe: Pipe) { return this.bird.y < pipe.gapTop ? 'THE FLY PANICKED.' : 'THE FLY DID NOT FLAP.'; }
+  private deathCause(pipe: Pipe) { return this.bird.y < pipe.gapTop ? '果蝇慌了神，撞上了上管。' : '果蝇错过了这次拍翅。'; }
   get targetPipe() { return this.pipes.find((p) => p.x + p.width >= this.bird.x) ?? this.pipes[0]; }
   capture(): FlappyState {
     const p = this.targetPipe;
