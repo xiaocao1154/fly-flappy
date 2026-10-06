@@ -30,3 +30,7 @@ desktop.ini
 *.temp
 *.swp
 *.swo
+
+# 本地运维记录（不推到 fork）
+RUN_STATUS.md
+FORK_GUIDE.md
